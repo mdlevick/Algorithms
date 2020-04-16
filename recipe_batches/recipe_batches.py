@@ -3,8 +3,16 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
-
+  batches = 0
+  for key, value in recipe.items():
+    if key not in ingredients or ingredients[key] < value:
+      batches = 0
+      break
+    temp = ingredients[key] // value
+    if batches > 0 and temp > batches:
+      continue
+    batches = temp
+  return batches
 
 if __name__ == '__main__':
   # Change the entries of these dictionaries to test 
