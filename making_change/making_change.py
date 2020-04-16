@@ -3,7 +3,11 @@
 import sys
 
 def making_change(amount, denominations):
-  pass 
+  ways = [1] + [0] * amount
+  for denom in denominations:
+    for i in range(denom, amount + 1):
+      ways[i] += ways[i - denom]
+  return ways[amount]
 
 
 if __name__ == "__main__":
